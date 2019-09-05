@@ -10,7 +10,7 @@ abstract class ValueOf {
     }
   }
 
-  num getNum(Map map, dynamic keys) {
+  num getNum(Map map, dynamic keys, {def}) {
     dynamic returnValue = _getValue(map, keys);
     if (returnValue is String) {
       try {
@@ -21,47 +21,47 @@ abstract class ValueOf {
         returnValue = 0;
       }
     } else if (returnValue == null || !(returnValue is num)) {
-      returnValue = 0;
+      returnValue = def ? def : 0;
     }
     return returnValue;
   }
 
-  bool getBool(Map map, dynamic keys) {
+  bool getBool(Map map, dynamic keys, {def}) {
     dynamic returnValue = _getValue(map, keys);
     if (returnValue is num) {
       returnValue = returnValue > 0;
     } else if (returnValue == null || !(returnValue is bool)) {
-      returnValue = false;
+      returnValue = def ? def : false;
     }
     return returnValue;
   }
 
-  String getStr(Map map, dynamic keys) {
+  String getStr(Map map, dynamic keys, {def}) {
     dynamic returnValue = _getValue(map, keys);
     if (returnValue == null) {
-      returnValue = '';
+      returnValue = def ? def : '';
     } else {
       returnValue = returnValue.toString();
     }
     return returnValue;
   }
 
-  Map getMap(Map map, dynamic keys) {
+  Map getMap(Map map, dynamic keys, {def}) {
     dynamic returnValue = _getValue(map, keys);
     if (returnValue != null && returnValue is Map) {
       returnValue = Map.from(returnValue);
     } else {
-      returnValue = null;
+      returnValue = def ? def : null;
     }
     return returnValue;
   }
 
-  List getList(Map map, dynamic keys) {
+  List getList(Map map, dynamic keys, {def}) {
     dynamic returnValue = _getValue(map, keys);
     if (returnValue != null && returnValue is List) {
       returnValue = List.from(returnValue);
     } else {
-      returnValue = List();
+      returnValue = def ? def : List();
     }
     return returnValue;
   }
