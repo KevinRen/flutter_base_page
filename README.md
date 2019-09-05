@@ -1,6 +1,6 @@
 # base_page
 
-A new Flutter package project.
+Page-level base classes.
 
 ## Getting Started
 

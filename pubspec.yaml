@@ -1,8 +1,8 @@
 name: base_page
 description: Page-level base classes
 version: 0.0.1
-author: KevinRen
-homepage:
+author: KevinRen <tosaicore@gmail.com>
+homepage: https://github.com/KevinRen/flutter_base_page
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
