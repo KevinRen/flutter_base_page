@@ -3,11 +3,14 @@ import '../utils/generalMethod.dart';
 
 abstract class AppBarComponent {
   AppBar _appBar;
+  bool _useAppBar = false;
   Function _leadingOnTap;
   State get state;
+  bool get uesAppBar => _useAppBar;
   AppBar get appBar => _appBar;
 
   void initAppBar({ String title, Color backgroundColor, Function leadingOnTap, List<Widget> actions }) {
+    _useAppBar = true;
     _appBar = _getAppBar(title: title, bgColor: backgroundColor, leadingClick: leadingOnTap, actions: actions);
   }
 

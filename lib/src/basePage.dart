@@ -44,8 +44,10 @@ abstract class BasePageState<T extends BasePage> extends State<T> with WidgetsBi
       ScreenUtil.instance = ScreenUtil(width: uiWidth ?? 750, height: uiHeight ?? 1334)..init(context);
     }
 
-    return Scaffold(
+    return uesAppBar ? Scaffold(
       appBar: appBar,
+      body: buildWidget(context),
+    ) : Scaffold(
       body: buildWidget(context),
     );
   }
