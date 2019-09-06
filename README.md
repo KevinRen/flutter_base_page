@@ -1,8 +1,6 @@
-# base_page
+#base_page
 
 为Flutter开发者提供基于页面级别的开发基类框架。
-
-
 
 ###Example
 
@@ -125,8 +123,6 @@ getList ==> []
 getMap ==> null
 getBool ==> false
 getListValue ==> null
-  
-  
 ```
 
 
@@ -134,11 +130,30 @@ getListValue ==> null
 ####3. 可适配的UI尺寸计算
 
 ```dart
+/// 继承BasePage类
+class HomePage extends BasePage {}
+
+/// 页面初始化时将UI设计稿尺寸进行初始化
 @override
   void initState() {
     uiWidth = 750.0;
     uiHeight = 1334.0;
     super.initState();
+  }
+
+/// 在布局中使用
+/// 对于布局元素的width/height，使用size()方法
+/// 对于字体元素的大小，使用fontSize()方法
+@override
+  Widget buildWidget(BuildContext context) {
+    return Container(
+      width: size(320),
+      height: size(80),
+      child: Text(
+        'hello',
+        style: TextStyle(fontSize: fontSize(32)),
+      ),
+    );
   }
 ```
 

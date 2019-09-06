@@ -9,16 +9,16 @@ abstract class AppBarComponent {
   bool get uesAppBar => _useAppBar;
   AppBar get appBar => _appBar;
 
-  void initAppBar({ String title, Color backgroundColor, Function leadingOnTap, List<Widget> actions }) {
+  void initAppBar({ String title, Color backgroundColor, Color titleColor, Function leadingOnTap, List<Widget> actions }) {
     _useAppBar = true;
-    _appBar = _getAppBar(title: title, bgColor: backgroundColor, leadingClick: leadingOnTap, actions: actions);
+    _appBar = _getAppBar(title: title, bgColor: backgroundColor, titleColor: titleColor, leadingClick: leadingOnTap, actions: actions);
   }
 
   void _leadingButtonEvent() {
     _leadingOnTap == null ? GeneralMethodUtil.popNavigator(state.context) : _leadingOnTap();
   }
 
-  AppBar _getAppBar({ String title: '', Color bgColor, Function leadingClick, List<Widget> actions }) {
+  AppBar _getAppBar({ String title: '', Color bgColor, Color titleColor, Function leadingClick, List<Widget> actions }) {
     bool isShowLeading = true;
     AppBarButton leadingButton;
     _leadingOnTap = leadingClick;
@@ -39,7 +39,7 @@ abstract class AppBarComponent {
       title: Text(
         title,
         style: TextStyle(
-            color: Colors.black
+            color: titleColor ?? Colors.black
         ),
       ),
       leading: leadingButton,
